@@ -1,6 +1,6 @@
 # Haiti Travel
 
-A travel guide to seven places in Haiti, with an interactive map, search and filters, and a trip planner that saves your route and shares it as a link. Built with plain HTML, CSS and JavaScript (ES modules): no framework and no build step.
+A travel guide to ten places in Haiti, with an interactive map, search and filters, and a trip planner that saves your route and shares it as a link. Built with plain HTML, CSS and JavaScript (ES modules): no framework and no build step.
 
 **Live site:** https://haiti-travel-carl.netlify.app
 
@@ -56,7 +56,7 @@ Connected to Netlify: every push to `main` deploys automatically. There is no bu
 
 ## Photo credits
 
-Photos come from [Wikimedia Commons](https://commons.wikimedia.org) and keep their original licenses. The full list with authors and licenses is on the site's [Photo credits](https://haiti-travel-carl.netlify.app/credits) page and in `js/data.js`. Jacmel is shown with an original illustration until a free photo is added.
+Most photos come from [Wikimedia Commons](https://commons.wikimedia.org) and keep their original licenses. A few shared photos live in `images/`; their photographers are not known, and they will be credited or removed on request. The full list is on the site's [Photo credits](https://haiti-travel-carl.netlify.app/credits) page and in `js/data.js`.
 
 ## License
 
