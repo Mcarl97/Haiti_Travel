@@ -1,4 +1,4 @@
-import { destinations, photos, TAGS, haitiOutline, islands, dominicanEdge, cities, commonsUrl, commonsPage } from './data.js';
+import { destinations, photos, TAGS, haitiOutline, islands, dominicanEdge, cities, commonsUrl, commonsPage, localUrl } from './data.js';
 import { nearest, orderRoute, routeKm, makeProjection, boundsOf } from './geo.js';
 import { trip } from './trip.js';
 
@@ -34,11 +34,20 @@ function illustration(label) {
     </svg>`;
 }
 
+// Largest available copy up to `width` (local photos are saved at fixed widths).
+function photoUrl(p, width) {
+    if (!p.local) return commonsUrl(p.file, width);
+    const w = p.widths.filter(x => x <= width).pop() || p.widths[0];
+    return localUrl(p.local, w);
+}
+
 function picture(key, label, sizes = '100vw', { eager = false } = {}) {
     const p = key && photos[key];
     if (!p) return illustration(label);
-    const srcset = WIDTHS.map(w => `${commonsUrl(p.file, w)} ${w}w`).join(', ');
-    return `<img src="${commonsUrl(p.file, 1280)}" srcset="${srcset}" sizes="${sizes}" alt="${esc(p.caption)}"
+    const srcset = p.local
+        ? p.widths.map(w => `${localUrl(p.local, w)} ${w}w`).join(', ')
+        : WIDTHS.map(w => `${commonsUrl(p.file, w)} ${w}w`).join(', ');
+    return `<img src="${photoUrl(p, 1280)}" srcset="${srcset}" sizes="${sizes}" alt="${esc(p.caption)}"
         ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" data-label="${esc(label)}">`;
 }
 
@@ -131,7 +140,7 @@ function filterPlaces(q, tag) {
 }
 
 function homeView(params) {
-    setMeta('', 'A travel guide to seven places in Haiti, with an interactive map, a trip planner and practical advice.');
+    setMeta('', 'A travel guide to ten places in Haiti, with an interactive map, a trip planner and practical advice.');
     const q = params.get('q') || '';
     const tag = TAGS.includes(params.get('tag')) ? params.get('tag') : '';
     return `
@@ -139,7 +148,7 @@ function homeView(params) {
         <div class="hero-media">${picture('citadelleAerial', 'Citadelle Laferrière', '100vw', { eager: true })}</div>
         <div class="wrap hero-inner">
             <h1>Haiti, from the Citadelle <em>to the sea.</em></h1>
-            <p class="lead">Seven places worth the journey: mountain fortresses, a royal palace, blue pools and a town of artists.</p>
+            <p class="lead">Ten places worth the journey: mountain fortresses, a royal palace, blue pools, quiet islands and a town of artists.</p>
             <form class="hero-search" role="search" data-search>
                 <label class="sr" for="heroQ">Search destinations</label>
                 ${icon('search')}
@@ -331,17 +340,25 @@ function aboutView() {
 
 function creditsView() {
     setMeta('Photo credits', 'Credits and licenses for the photos used on Haiti Travel.');
+    const all = Object.values(photos);
+    const commons = all.filter(p => !p.local);
+    const local = all.filter(p => p.local);
     return `<section class="wrap page">
         <h1 tabindex="-1">Photo credits</h1>
-        <p class="lead">Every photo comes from Wikimedia Commons and keeps its original license.</p>
+        <h2>Wikimedia Commons</h2>
+        <p class="lead">These photos come from Wikimedia Commons and keep their original licenses.</p>
         <div class="table-wrap"><table class="credits">
             <thead><tr><th>Photo</th><th>Author</th><th>License</th></tr></thead>
-            <tbody>${Object.values(photos).map(p => `<tr>
+            <tbody>${commons.map(p => `<tr>
                 <td><a href="${commonsPage(p.file)}">${esc(p.caption)}</a></td>
                 <td>${esc(p.author || 'See file page')}</td>
                 <td>${esc(p.license || 'See file page')}</td></tr>`).join('')}
             </tbody></table></div>
-        <p class="note">Jacmel is shown with an original illustration until a free photo is added.</p>
+        <h2>Shared photos</h2>
+        <p>These photos were shared with Haiti Travel and their original photographers are not known.
+        If one of them is yours, get in touch through <a href="https://carlmesidor.com">carlmesidor.com</a>
+        and it will be credited the way you want, or removed.</p>
+        <ul class="ticks">${local.map(p => `<li>${icon('check')}${esc(p.caption)}</li>`).join('')}</ul>
     </section>`;
 }
 
@@ -410,9 +427,9 @@ const lb = { el: $('#lightbox'), keys: [], i: 0 };
 
 function showPhoto() {
     const p = photos[lb.keys[lb.i]];
-    $('#lbImg').src = commonsUrl(p.file, 1920);
+    $('#lbImg').src = photoUrl(p, 1920);
     $('#lbImg').alt = p.caption;
-    $('#lbCaption').innerHTML = `${esc(p.caption)} <span>· ${esc(p.author || 'Wikimedia Commons')}${p.license ? `, ${esc(p.license)}` : ''} · ${lb.i + 1} of ${lb.keys.length}</span>`;
+    $('#lbCaption').innerHTML = `${esc(p.caption)} <span>· ${esc(p.author || (p.local ? 'Haiti Travel' : 'Wikimedia Commons'))}${p.license ? `, ${esc(p.license)}` : ''} · ${lb.i + 1} of ${lb.keys.length}</span>`;
     $$('.lb-prev, .lb-next', lb.el).forEach(b => { b.hidden = lb.keys.length < 2; });
 }
 

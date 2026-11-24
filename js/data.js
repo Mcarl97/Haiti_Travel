@@ -4,7 +4,9 @@
 
 export const TAGS = ['History', 'Beaches', 'Nature', 'Culture', 'Mountains'];
 
-// Photos from Wikimedia Commons. `license: null` means "see the file page".
+// Photos come from two places:
+// - Wikimedia Commons (`file`). `license: null` means "see the file page".
+// - The site's own /images folder (`local` + the widths saved there).
 export const photos = {
     citadelleAerial: {
         file: 'Citadelle_Laferrière_Aerial_View.jpg',
@@ -65,6 +67,31 @@ export const photos = {
         caption: 'Farm terraces near Kenscoff',
         author: null,
         license: null
+    },
+    labadeeAmiga: {
+        local: 'labadee-amiga', widths: [480, 960, 1440],
+        caption: 'Amiga Island, off the coast near Labadee',
+        author: null, license: null
+    },
+    jacmelStreet: {
+        local: 'jacmel-street', widths: [480, 960, 1600],
+        caption: 'A street in Jacmel',
+        author: null, license: null
+    },
+    gonaveCove: {
+        local: 'gonave-cove', widths: [480, 594],
+        caption: 'A cove on La Gonâve',
+        author: null, license: null
+    },
+    portSalutCoast: {
+        local: 'port-salut-coast', widths: [480, 960, 1170],
+        caption: 'The coast near Port-Salut',
+        author: null, license: null
+    },
+    artiboniteRiver: {
+        local: 'artibonite-river', widths: [480, 948],
+        caption: 'The Artibonite River near Petite-Rivière',
+        author: null, license: null
     }
 };
 
@@ -174,8 +201,8 @@ export const destinations = [
             gettingThere: 'Mainly by cruise ship; access from land is limited.'
         },
         days: 1,
-        image: 'labadee',
-        gallery: ['labadee']
+        image: 'labadeeAmiga',
+        gallery: ['labadeeAmiga', 'labadee']
     },
     {
         id: 'port-au-prince',
@@ -228,8 +255,8 @@ export const destinations = [
             gettingThere: 'By road over the mountains from Port-au-Prince.'
         },
         days: 2,
-        image: null,
-        gallery: []
+        image: 'jacmelStreet',
+        gallery: ['jacmelStreet']
     },
     {
         id: 'bassin-bleu',
@@ -257,6 +284,87 @@ export const destinations = [
         days: 0.5,
         image: 'bassinBleu',
         gallery: ['bassinBleu']
+    },
+    {
+        id: 'artibonite',
+        name: 'Petite-Rivière & Marchand-Dessalines',
+        region: 'Artibonite',
+        coords: { lat: 19.13, lng: -72.48 },
+        tags: ['History', 'Nature'],
+        summary: 'The Artibonite valley, where Dessalines held Crête-à-Pierrot and built Haiti\'s first capital.',
+        title: 'Dessalines\' country',
+        body: [
+            'The Artibonite River, the longest on the island, winds through a wide green valley known as Haiti\'s rice bowl. Petite-Rivière-de-l\'Artibonite sits above it, home to the Crête-à-Pierrot fort, where Dessalines\' troops held out against a French siege in March 1802.',
+            'A short drive north, Marchand-Dessalines was made the capital of the new nation in 1804. A ring of forts on the hills around the town, including Fort Décidé, Fort Madame and Fort Innocent, still looks out over the valley.'
+        ],
+        highlights: [
+            'Crête-à-Pierrot fort and its 1802 battle',
+            'The Palais aux 365 Portes in Petite-Rivière',
+            'The forts around Marchand-Dessalines',
+            'River views across the rice fields'
+        ],
+        facts: {
+            time: 'One day',
+            bestFor: 'History, landscapes, a road trip north',
+            gettingThere: 'By road north from Port-au-Prince through Saint-Marc; allow a few hours each way.'
+        },
+        days: 1,
+        image: 'artiboniteRiver',
+        gallery: ['artiboniteRiver']
+    },
+    {
+        id: 'la-gonave',
+        name: 'La Gonâve',
+        region: 'West',
+        coords: { lat: 18.85, lng: -73.05 },
+        tags: ['Beaches', 'Nature'],
+        summary: 'Haiti\'s largest island, with quiet coves and fishing villages in the gulf west of the capital.',
+        title: 'The island in the gulf',
+        body: [
+            'La Gonâve lies in the Gulf of Gonâve, west of Port-au-Prince. At about 60 kilometers long, it is the largest of Haiti\'s islands, and life there moves at the pace of its fishing villages.',
+            'Its coves and clear water make it a calm escape from the mainland, best enjoyed slowly with a local host.'
+        ],
+        highlights: [
+            'Quiet coves and clear water',
+            'Fishing villages along the coast',
+            'Boat crossing across the gulf',
+            'Anse-à-Galets, the main town'
+        ],
+        facts: {
+            time: 'Two days',
+            bestFor: 'Slow travel, the sea, getting off the beaten path',
+            gettingThere: 'By boat from the coast near Montrouis or Port-au-Prince to Anse-à-Galets.'
+        },
+        days: 2,
+        image: 'gonaveCove',
+        gallery: ['gonaveCove']
+    },
+    {
+        id: 'port-salut',
+        name: 'Port-Salut',
+        region: 'South',
+        coords: { lat: 18.08, lng: -73.92 },
+        tags: ['Beaches', 'Nature'],
+        summary: 'A relaxed beach town on the south coast, with long sandy beaches lined with palms.',
+        title: 'The beaches of the south',
+        body: [
+            'Port-Salut sits on Haiti\'s southern coast, west of Les Cayes. It is known for long beaches of soft sand backed by coconut palms, and for fresh seafood served right on the shore.',
+            'It makes an easy base for exploring the south, from Les Cayes to the green hills inland.'
+        ],
+        highlights: [
+            'Long palm-lined beaches',
+            'Fresh seafood by the water',
+            'Calm, uncrowded coastline',
+            'A short drive from Les Cayes'
+        ],
+        facts: {
+            time: 'Two days',
+            bestFor: 'Beach time, seafood, slowing down',
+            gettingThere: 'By road from Les Cayes, west along the coast.'
+        },
+        days: 2,
+        image: 'portSalutCoast',
+        gallery: ['portSalutCoast', 'landscape']
     }
 ];
 
@@ -266,7 +374,7 @@ export const haitiOutline = [
     [-72.15, 19.77], [-71.95, 19.73], [-71.75, 19.70], [-71.72, 19.55], [-71.76, 19.35],
     [-71.70, 19.15], [-71.78, 18.95], [-71.90, 18.75], [-71.82, 18.55], [-71.73, 18.35],
     [-71.76, 18.05], [-72.05, 18.12], [-72.35, 18.20], [-72.55, 18.22], [-72.85, 18.15],
-    [-73.20, 18.20], [-73.55, 18.15], [-73.80, 18.18], [-74.10, 18.30], [-74.45, 18.37],
+    [-73.20, 18.20], [-73.55, 18.10], [-73.80, 18.03], [-73.97, 18.05], [-74.10, 18.30], [-74.45, 18.37],
     [-74.42, 18.55], [-74.20, 18.66], [-73.85, 18.60], [-73.50, 18.52], [-73.10, 18.45],
     [-72.80, 18.47], [-72.55, 18.53], [-72.35, 18.58], [-72.45, 18.85], [-72.75, 19.05],
     [-72.70, 19.20], [-72.75, 19.42], [-72.70, 19.47], [-72.95, 19.62], [-73.25, 19.65],
@@ -291,6 +399,8 @@ export const cities = [
 
 export const commonsUrl = (file, width = 1280) =>
     `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${width}`;
+
+export const localUrl = (name, width) => `/images/${name}-${width}.jpg`;
 
 export const commonsPage = file =>
     `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file)}`;
