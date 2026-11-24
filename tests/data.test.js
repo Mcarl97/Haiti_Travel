@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { destinations, photos, TAGS, haitiOutline } from '../js/data.js';
+import { existsSync } from 'node:fs';
 import { boundsOf } from '../js/geo.js';
 
 test('every destination has a unique, URL-safe id', () => {
@@ -35,5 +36,16 @@ test('coordinates fall inside the map of Haiti', () => {
     for (const { id, coords } of destinations) {
         assert.ok(coords.lat >= b.minLat && coords.lat <= b.maxLat, `${id} latitude is off the map`);
         assert.ok(coords.lng >= b.minLng && coords.lng <= b.maxLng, `${id} longitude is off the map`);
+    }
+});
+
+test('local photos exist on disk at every listed width', () => {
+    for (const [key, p] of Object.entries(photos)) {
+        if (!p.local) continue;
+        assert.ok(p.widths.length > 0, `${key} lists no widths`);
+        for (const w of p.widths) {
+            const path = new URL(`../images/${p.local}-${w}.jpg`, import.meta.url);
+            assert.ok(existsSync(path), `${key} is missing images/${p.local}-${w}.jpg`);
+        }
     }
 });
