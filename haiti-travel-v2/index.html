@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Haiti Travel: the Citadelle, Jacmel, Bassin Bleu and more</title>
+    <meta name="description" content="A travel guide to seven places in Haiti, with an interactive map, a trip planner and practical advice.">
+    <meta name="theme-color" content="#0d3b3f">
+    <meta property="og:title" content="Haiti Travel">
+    <meta property="og:description" content="Seven places worth the journey, an interactive map and a trip planner.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://haiti-travel-carl.netlify.app/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://commons.wikimedia.org">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!-- Icon sprite: referenced with <svg><use href="#i-name"/></svg> -->
+    <svg width="0" height="0" class="sprite" aria-hidden="true">
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+        <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+        <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v5M12 18v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    </svg>
+
+    <header class="site-header" id="siteHeader">
+        <div class="wrap header-row">
+            <a href="/" class="brand" data-link>
+                <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0d3b3f"/><path d="M5 21c4-6 7-9 11-9s7 3 11 9" fill="none" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><circle cx="16" cy="10" r="3" fill="#e4572e"/></svg>
+                <span>Haiti <em>Travel</em></span>
+            </a>
+            <nav aria-label="Main">
+                <ul class="nav">
+                    <li><a href="/#explore" data-link>Explore</a></li>
+                    <li><a href="/about" data-link>Before you go</a></li>
+                    <li><a href="/trip" data-link class="trip-link"><svg class="i"><use href="#i-bag"/></svg>My trip <span class="badge" id="tripCount">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1"></main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <div>
+                <p class="footer-brand">Haiti <em>Travel</em></p>
+                <p>A guide to seven places worth the journey. Built by <a href="https://carlmesidor.com">Carl Mesidor</a>.</p>
+            </div>
+            <div>
+                <p class="footer-head">Explore</p>
+                <ul id="footerDestinations"></ul>
+            </div>
+            <div>
+                <p class="footer-head">This project</p>
+                <ul>
+                    <li><a href="/about" data-link>Before you go</a></li>
+                    <li><a href="/credits" data-link>Photo credits</a></li>
+                    <li><a href="https://github.com/Mcarl97/Haiti_Travel">Source code on GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap footer-bottom">
+            <p>&copy; <span id="year">2026</span> Carl Mesidor. Photos from Wikimedia Commons under their own licenses.</p>
+        </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+        <button class="lb-btn lb-close" data-lb="close" aria-label="Close"><svg class="i"><use href="#i-close"/></svg></button>
+        <button class="lb-btn lb-prev" data-lb="prev" aria-label="Previous photo"><svg class="i"><use href="#i-back"/></svg></button>
+        <figure class="lb-figure">
+            <img id="lbImg" alt="">
+            <figcaption id="lbCaption"></figcaption>
+        </figure>
+        <button class="lb-btn lb-next" data-lb="next" aria-label="Next photo"><svg class="i"><use href="#i-arrow"/></svg></button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript><p class="wrap noscript">This guide needs JavaScript to show its pages.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "haiti-travel",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Responsive travel guide to Haiti with an interactive map and a trip planner. Vanilla JavaScript, no build step.",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve -s .",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" },
+  "license": "MIT"
+}
